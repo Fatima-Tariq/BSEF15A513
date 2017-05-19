@@ -1,0 +1,46 @@
+#!usr/bin/env python 
+
+ 
+processes={} 
+Exectime=[] 
+arrivaltime=[] 
+runningQueue=[] 
+timeslice=0 
+waitingTime=0 
+turnaroundtime=0 
+x=0 
+print "Enter time slice" 
+timeSlices=input() 
+n=input("Enter total number of processes: ")
+def input_and_Append(): 
+for i in range(0,n): 
+	print "Enter execution time of process :",i 
+        executionTime=input() 
+        Exectime.append(executionTime) 
+ 	print "Enter arrival timeof process ",i 
+ 	at=input() 
+ 	arrivaltime.append(at) 
+        processes[i+1]=[Exectime[i]] 
+
+def sort_arrival_time(): 
+for i in range (0,n): 
+ 	for j in range (0,n): 
+ 		if(arrivaltime[i]<arrivaltime[j]): 
+ 			temp=arrivaltime[i] 
+ 			arrivaltime[i]=arrivaltime[j] 
+ 			arrivaltime[j]=temp 
+ 			temp2=Exectime[i] 
+ 			Exectime[i]=Exectime[j] 
+ 			Exectime[j]=temp2
+def print(): 
+print "Process ID\tarrival time\tWaiting time" 
+for i in range(0,n): 
+ 	while(arrivaltime[x]<=waitingTime): 
+ 		runningQueue.append(Exectime[x]) 
+ 		x=x+1 
+         print i,"\t\t",arrivaltime[i],"\t\t",wt 
+         waitingTime+=timeSlice 
+ 	runningQueue[i]-=ts 
+input_and_Append()
+sort_arrival_time()
+print()
